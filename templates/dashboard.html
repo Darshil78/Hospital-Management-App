@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <h2 class="page-title">Welcome to Hospital Management System Dashboard</h2>
+
+    {% if role == 'Patient' %}
+    <div class="card-box">
+        <h4>Patient Dashboard</h4>
+        <p>Here you can see your appointments, medicines, and reports.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-box">
+                <h5>Appointments</h5>
+                {% if appointments_list %}
+                    <ul>
+                        {% for item in appointments_list %}
+                        <li>{{ item.appointment_date }} at {{ item.appointment_time }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No appointments yet.</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-box">
+                <h5>Medicines</h5>
+                {% if prescriptions %}
+                    <ul>
+                        {% for prescription in prescriptions %}
+                        <li>
+                            <strong>{{ prescription.medicine_name or 'Medicine' }}</strong>
+                            {% if prescription.dosage %}<br>Dosage: {{ prescription.dosage }}{% endif %}
+                            {% if prescription.timing %}<br>Timing: {{ prescription.timing }}{% endif %}
+                            {% if prescription.instructions %}<br>Instructions: {{ prescription.instructions }}{% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No medicines assigned.</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-box">
+                <h5>Reports</h5>
+                <p>Open your reports here.</p>
+                <a href="/reports" class="btn-primary">View Reports</a>
+            </div>
+        </div>
+    </div>
+    {% elif role == 'Doctor' %}
+    <div class="card-box">
+        <h4>Doctor Dashboard</h4>
+        <p>View patients, appointments, and reports here.</p>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-box">
+                <h5>Patients</h5>
+                <h2>{{ patients }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-box">
+                <h5>Appointments</h5>
+                <h2>{{ appointments }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-box">
+                <h5>Reports</h5>
+                <a href="/reports" class="btn-primary">View Reports</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="card-box">
+        <h4>Admin Dashboard</h4>
+        <p>Manage hospitals, doctors, patients, medicines, and appointments.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-box">
+                <h5>Patients</h5>
+                <h2>{{ patients }}</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-box">
+                <h5>Doctors</h5>
+                <h2>{{ doctors }}</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-box">
+                <h5>Appointments</h5>
+                <h2>{{ appointments }}</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-box">
+                <h5>Medicines</h5>
+                <h2>{{ medicines }}</h2>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

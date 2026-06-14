@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+
+<div class="d-flex justify-content-between align-items-center">
+
+
+<h2>
+Medicine Table
+</h2>
+
+
+<div class="d-flex gap-2">
+
+<a href="/pharmacy/add"
+class="btn-primary">
+
++ Add Medicine
+
+</a>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card-box">
+
+
+
+<table class="table table-hover">
+
+
+<thead>
+
+
+<tr>
+
+<th>Name</th>
+
+<th>Category</th>
+
+<th>Company</th>
+
+<th>Quantity</th>
+
+<th>Price</th>
+
+<th>Expiry</th>
+
+<th>Action</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+
+{% for m in medicines %}
+
+
+
+<tr>
+
+
+<td>
+{{m.name}}
+</td>
+
+
+<td>
+{{m.category}}
+</td>
+
+
+<td>
+{{m.company}}
+</td>
+
+
+<td>
+{{m.quantity}}
+</td>
+
+
+<td>
+₹ {{m.price}}
+</td>
+
+
+<td>
+{{m.expiry_date}}
+</td>
+
+
+
+<td>
+
+
+<a href="/pharmacy/delete/{{m.id}}"
+class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+{% endfor %}
+
+
+</tbody>
+
+
+</table>
+
+
+
+</div>
+
+
+
+{% endblock %}

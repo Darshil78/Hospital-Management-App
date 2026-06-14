@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="card-box">
+        <h3>Recommend Medicine for {{ patient.name }}</h3>
+        <p class="text-muted">Add a medicine recommendation for this patient.</p>
+
+        <div class="mb-3">
+            <strong>Patient:</strong> {{ patient.name }}<br>
+            <strong>Age:</strong> {{ patient.age }}<br>
+            <strong>Phone:</strong> {{ patient.phone }}<br>
+            <strong>Disease:</strong> {{ patient.disease }}
+        </div>
+
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Medicine Name</label>
+                <input type="text" class="form-control" name="medicine_name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Dosage</label>
+                <input type="text" class="form-control" name="dosage" placeholder="e.g. 1 tablet">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Duration</label>
+                <input type="text" class="form-control" name="duration" placeholder="e.g. 7 days">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Instructions</label>
+                <textarea class="form-control" name="instructions" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-control" name="date">
+            </div>
+
+            <button type="submit" class="btn btn-success">Save Recommendation</button>
+            <a href="{{ url_for('patients.index') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+
+<div class="card-box">
+
+
+<h2>
+Add Doctor
+</h2>
+
+
+
+<form method="POST" action="{{ url_for('doctors.add') }}">
+
+<input class="form-control"
+name="name"
+placeholder="Doctor Name"
+required>
+
+
+<br>
+
+
+
+<input class="form-control"
+name="specialization"
+placeholder="Specialization">
+
+
+<br>
+
+
+<input class="form-control"
+name="qualification"
+placeholder="Qualification">
+
+
+<br>
+
+
+<input class="form-control"
+name="experience"
+placeholder="Experience">
+
+
+<br>
+
+
+<input class="form-control"
+name="phone"
+placeholder="Phone">
+
+
+<br>
+
+
+<input class="form-control"
+name="email"
+placeholder="Email">
+
+
+<br>
+
+<input class="form-control"
+name="available_time"
+placeholder="Available Time">
+
+<br>
+
+
+
+<button class="btn-primary">
+
+Save Doctor
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+{% endblock %}

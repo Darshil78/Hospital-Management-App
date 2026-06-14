@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card-box">
+    <h2>Book Appointment</h2>
+
+    <form method="POST" action="{{ url_for('appointments.add') }}">
+        <label>Select Patient</label>
+        <select name="patient" class="form-control">
+            {% for p in patients %}
+            <option value="{{ p.id }}">{{ p.name }}</option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        <label>Select Doctor</label>
+        <select name="doctor" class="form-control">
+            {% for d in doctors %}
+            <option value="{{ d.id }}">Dr. {{ d.name }}</option>
+            {% endfor %}
+        </select>
+
+        <br>
+
+        <input class="form-control" name="date" placeholder="Appointment Date" type="date">
+        <br>
+        <input class="form-control" name="time" placeholder="Appointment Time" type="time">
+        <br>
+        <textarea class="form-control" name="problem" placeholder="Problem / Symptoms"></textarea>
+        <br>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="visited_before" id="visited_before" onchange="toggleOldReport(this.checked)">
+            <label class="form-check-label" for="visited_before">Visited before</label>
+        </div>
+
+        <div id="old-report-group" style="display:none;">
+            <textarea class="form-control" name="old_report" placeholder="Previous Report / Notes"></textarea>
+        </div>
+
+        <br>
+        <button class="btn-primary">Book Appointment</button>
+    </form>
+</div>
+
+<script>
+function toggleOldReport(checked) {
+    const oldReportGroup = document.getElementById('old-report-group');
+    oldReportGroup.style.display = checked ? 'block' : 'none';
+}
+</script>
+{% endblock %}

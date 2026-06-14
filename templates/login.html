@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Login - Hospital Management System</title>
+
+
+<link rel="stylesheet"
+href="{{url_for('static',filename='css/style.css')}}">
+
+</head>
+
+
+<body class="login-bg">
+
+
+<div class="login-card">
+
+
+<h2>
+🏥 Hospital Management System
+</h2>
+
+
+<h4>
+Login
+</h4>
+
+
+
+<form method="POST" action="{{ url_for('auth.admin_login') if admin_mode else url_for('auth.login') }}">
+
+
+<input 
+type="email"
+name="email"
+placeholder="Email"
+class="form-control"
+required>
+
+
+
+<br>
+
+
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+class="form-control"
+required>
+
+
+
+<br>
+
+
+<button class="btn-primary">
+
+{% if admin_mode %}
+Admin Login
+{% else %}
+Login
+{% endif %}
+
+</button>
+
+
+
+</form>
+
+
+
+<p>
+
+{% if admin_mode %}
+Need an admin account?
+<a href="{{ url_for('auth.admin_register') }}">
+Create Admin Account
+</a>
+<br>
+<a href="{{ url_for('auth.login') }}">
+Back to user login
+</a>
+{% else %}
+Don't have account?
+<a href="{{ url_for('auth.register') }}">
+Register
+</a>
+{% endif %}
+
+</p>
+
+
+
+</div>
+
+
+</body>
+
+</html>

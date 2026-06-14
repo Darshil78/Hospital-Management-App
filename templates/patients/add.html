@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+
+<div class="card-box">
+
+
+<h2>
+Add Patient
+</h2>
+
+
+
+<form method="POST">
+
+
+
+<input class="form-control"
+name="name"
+placeholder="Patient Name"
+required>
+
+<br>
+
+
+<input class="form-control"
+name="age"
+placeholder="Age">
+
+
+<br>
+
+
+<select class="form-control"
+name="gender">
+
+
+<option>
+Male
+</option>
+
+
+<option>
+Female
+</option>
+
+
+</select>
+
+
+<br>
+
+
+<input class="form-control"
+name="blood"
+placeholder="Blood Group">
+
+
+<br>
+
+
+<input class="form-control"
+name="phone"
+placeholder="Phone Number">
+
+
+<br>
+
+
+<input class="form-control"
+name="email"
+placeholder="Email">
+
+
+<br>
+
+
+<input class="form-control"
+name="disease"
+placeholder="Disease">
+
+
+<br>
+
+
+<button class="btn-primary">
+
+Save Patient
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+{% endblock %}

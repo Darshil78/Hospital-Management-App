@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+
+
+<div class="card-box">
+
+    <h2>Add Medicine</h2>
+
+    <form method="POST">
+        <div class="mb-3">
+            <input class="form-control" name="name" placeholder="Medicine Name">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" name="category" placeholder="Category">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" name="company" placeholder="Company">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" name="quantity" placeholder="Quantity">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" name="price" placeholder="Price">
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" name="expiry" placeholder="Expiry Date">
+        </div>
+
+        <div class="mt-4 pt-2">
+            <button class="btn-primary">Save Medicine</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

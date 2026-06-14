@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Appointments</h2>
+    <a href="/appointments/add" class="btn-primary">+ Add Appointment</a>
+</div>
+
+<div class="card-box">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Problem</th>
+                <th>Status</th>
+                <th>Previous Report</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in appointments %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.patient.name if item.patient else '-' }}</td>
+                <td>{{ item.doctor.name if item.doctor else '-' }}</td>
+                <td>{{ item.appointment_date }}</td>
+                <td>{{ item.appointment_time }}</td>
+                <td>{{ item.reason }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.old_report if item.old_report else 'None' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

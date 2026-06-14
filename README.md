@@ -18,7 +18,6 @@ A Flask-based hospital management application for managing patients, doctors, ap
 - Flask-SQLAlchemy
 - Flask-Login
 - SQLite
-- Jinja2
 - Bootstrap
 - ReportLab
 
